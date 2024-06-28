@@ -1,6 +1,6 @@
 # Sign Language to Text Conversion
 
-## Project Overview
+## Description
 
 This project aims to translate sign language into text using MediaPipe for hand tracking and an LSTM (Long Short-Term Memory) neural network for sequence prediction. The goal is to create an efficient and accurate system that can interpret sign language gestures and convert them into readable text, facilitating communication for the hearing-impaired community.
 
