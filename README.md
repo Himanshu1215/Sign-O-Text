@@ -15,7 +15,7 @@ This project aims to translate sign language into text using MediaPipe for hand 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/Sign-O-Text.git
+    git clone https://github.com/Himanshu1215/Sign-O-Text.git
     ```
 2. Navigate to the project directory:
     ```bash
