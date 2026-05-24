@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-O-Text - Live Sign Language Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤟</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-icon">&#x1F91F;</span>
+            <h1>Sign-<span class="highlight">O</span>-Text</h1>
+        </div>
+        <div class="status-bar">
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Initializing...</span>
+            </div>
+            <button class="btn btn-secondary" id="resetBtn" title="Clear buffer and restart">&#x21BB; Reset</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="detection-panel">
+            <div class="webcam-container">
+                <video id="webcam" autoplay playsinline muted></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+
+                <div class="prediction-overlay" id="predictionOverlay">
+                    <div class="prediction-card" id="predictionCard">
+                        <div class="prediction-empty" id="predictionEmpty">
+                            <div class="empty-icon">&#x1F91F;</div>
+                            <p class="empty-text">Show a sign to the camera</p>
+                            <p class="empty-sub">Fill the buffer by holding a sign</p>
+                        </div>
+                        <div class="prediction-result" id="predictionResult" style="display:none;">
+                            <div class="prediction-label">PREDICTION</div>
+                            <div class="prediction-sign" id="predictionSign">&mdash;</div>
+                            <div class="confidence-bar-container">
+                                <div class="confidence-label">
+                                    <span>Confidence</span>
+                                    <span id="confidenceText">0%</span>
+                                </div>
+                                <div class="confidence-track">
+                                    <div class="confidence-fill" id="confidenceFill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buffer-indicator">
+                    <div class="buffer-label">Frame Buffer</div>
+                    <div class="buffer-bar">
+                        <div class="buffer-fill" id="bufferFill"></div>
+                    </div>
+                    <div class="buffer-text">
+                        <span id="bufferCount">0</span> / <span id="bufferCapacity">30</span> frames
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Class Probabilities</h3>
+                    <div class="probabilities" id="probabilities">
+                        <div class="prob-empty">Waiting for predictions...</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Prediction History</h3>
+                    <div class="history" id="history">
+                        <div class="history-empty">No predictions yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-hand-overlay" id="noHandOverlay">
+            <div class="no-hand-content">
+                <div class="no-hand-icon">&#x1F590;&#xFE0F;</div>
+                <h2>No Hands Detected</h2>
+                <p>Hold your hand up to the camera to start signing</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Sign-O-Text &mdash; MediaPipe + LSTM Real-Time Sign Language Recognition</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
